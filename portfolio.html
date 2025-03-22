@@ -1,0 +1,2333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Gamal - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Custom styles for animations and enhanced UI - Refined Glassmorphic (Slicker) */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Darker, more saturated background (slate-900) */
+            color: #f9fafb; /* Off-white, slightly warmer text (gray-50) */
+            line-height: 1.7; /* Increased line height for better readability */
+        }
+        .container {
+            max-width: 1000px; /* Slightly wider container */
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .section {
+            margin-bottom: 4rem; /* Increased section spacing */
+            padding: 1px 2rem; /* Added horizontal padding to sections */
+            max-width: 70%; /* Changed max-width to 70% */
+            margin-left: auto; /* Center the section horizontally */
+            margin-right: auto;
+            transition: transform 0.3s ease; /* Added transition for scaling */
+            border-radius: 1rem;
+        }
+        .section:hover {
+            transform: scale(1.04); /* Slightly scale up on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .section:not(:hover) {
+             transform: scale(1);
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-title {
+            font-size: 2.25rem; /* Larger title (text-4xl) */
+            font-weight: 700; /* Use 700 for Inter's bold (font-bold) */
+            color: #e0f2fe; /* Light cyan title (cyan-100) - subtle accent */
+            margin-bottom: 1.5rem; /* Increased title spacing */
+            text-align: center;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4); /* Deeper text shadow */
+            display: flex; /* Added for icon alignment */
+            align-items: center; /* Vertically center icon and text */
+            justify-content: center; /* Horizontally center icon and text */
+            gap: 0.5rem; /* Space between icon and text */
+        }
+        .section-title i { /* Style for the icon */
+            font-size: 1.75rem; /* Size of the icon */
+            color: #a7f3d0;
+            margin-right: 0.5rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 80px); /* Full viewport height minus header */
+            text-align: center;
+            padding: 0 2rem;
+        }
+        .hero-title {
+            font-size: 3.5rem; /* Even larger hero title (text-5xl, adjusted) */
+            font-weight: 700; /* Use 700 for Inter's bold */
+            color: #f5f5f5; /* Off-white (gray-50) */
+            margin-bottom: 1rem;
+            text-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); /* More pronounced hero text shadow */
+            letter-spacing: -0.02em;
+        }
+        .hero-subtitle {
+            font-size: 1.5rem; /* Slightly larger subtitle (text-2xl) */
+            color: #d1d5db; /* Gray-300, slightly lighter */
+            margin-bottom: 2rem;
+            max-width: 80%; /* Increased max-width for subtitle */
+            line-height: 1.8; /* Increased subtitle line height */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem; /* Slightly increased button padding */
+            font-size: 1.25rem; /* Larger button text (text-lg) */
+            font-weight: 600; /* Use 600 for Inter's semi-bold (font-semibold) */
+            color: #fff;
+            background-color: #4f46e5; /* More vibrant purple (violet-600) */
+            border-radius: 0.75rem; /* More rounded button (rounded-lg) */
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease; /* Added background-color transition */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Deeper button shadow */
+            cursor: pointer;
+            border: none;
+            outline: none;
+            gap: 0.5rem;
+        }
+        .cta-button:hover {
+            transform: translateY(-4px) scale(1.05); /* Subtler scale on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Increased hover shadow */
+            background-color: #6d28d9; /* Darker purple on hover (violet-700) */
+        }
+        .cta-button:active {
+            transform: translateY(0) scale(0.95);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Smaller active shadow */
+        }
+        .about-me {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+        }
+        .about-content {
+            font-size: 1.1rem; /* Slightly larger body text (text-base) */
+            color: #e5e7eb; /* Gray-200, even lighter text */
+            line-height: 1.9; /* Slightly increased about me line height */
+            margin-bottom: 2rem; /* Increased about me spacing */
+            max-width: 90%; /* Increased max-width for about me */
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid, wider items */
+            gap: 2rem; /* Increased gap */
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .skill-card {
+            background-color: rgba(255, 255, 255, 0.06); /* Slightly more transparent skill cards */
+            padding: 2rem; /* Increased skill card padding */
+            border-radius: 1rem; /* More rounded skill cards */
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Added box-shadow transition */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly stronger skill card shadow */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .skill-card:hover {
+            transform: translateY(-6px) scale(1.04); /* Subtler scale on skill hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Increased skill hover shadow */
+        }
+        .skill-title {
+            font-size: 1.25rem; /* Larger skill title (text-lg) */
+            font-weight: 600; /* Use 600 for Inter's semi-bold */
+            color: #e0f7fa; /* Light cyan for skill title (cyan-50) */
+            margin-bottom: 0.75rem; /* Increased skill title spacing */
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+         .skill-icon {
+            width: 3rem; /* Increased size of skill icon */
+            height: 3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center; /* Center content horizontally */
+            justify-content: center; /* Center content vertically */
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            color: #a7f3d0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-size: 1.5rem;
+        }
+        .experience-card {
+            background-color: rgba(255, 255, 255, 0.06); /* More transparent experience cards */
+            padding: 2rem; /* Increased experience card padding */
+            border-radius: 1rem; /* More rounded experience cards */
+            margin-bottom: 2rem; /* Increased experience card spacing */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly stronger experience card shadow */
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Added background-color transition */
+            position: relative;
+            padding-left: 3.5rem; /* Space for the icon */
+            max-width: 1000px; /* Added max-width to experience card */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .experience-card:hover {
+            background-color: rgba(255, 255, 255, 0.08); /* Slightly lighter hover background */
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .experience-icon {
+            position: absolute;
+            left: 1.5rem;
+            top: 2rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            color: #a7f3d0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .company-name {
+            font-size: 1.5rem; /* Larger company name (text-2xl) */
+            font-weight: 600; /* Use 600 for Inter's semi-bold */
+            color: #b0f2fe; /* Lighter cyan for company (cyan-100) */
+            margin-bottom: 0.5rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+        .job-title {
+            font-size: 1.1rem; /* Slightly larger job title (text-base) */
+            font-weight: 500; /* Use 500 for Inter's medium (font-medium) */
+            color: #d1d5db; /* Gray-300 */
+            margin-bottom: 0.75rem; /* Increased job title spacing */
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .date-range {
+            font-size: 0.9rem; /* Slightly larger date range (text-sm) */
+            color: #9ca3af; /* Gray-400 */
+            margin-bottom: 1rem;
+        }
+        .job-description {
+            font-size: 1.1rem; /* Slightly larger job description (text-base) */
+            color: #e5e7eb; /* Gray-200 */
+            line-height: 1.9; /* Increased job description line height */
+            margin-bottom: 1.5rem; /* Increased job description spacing */
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            list-style-position: inside;
+            padding-left: 0.5rem;
+        }
+        .project-card {
+            background-color: rgba(255, 255, 255, 0.06); /* More transparent project cards */
+            padding: 2rem; /* Increased project card padding */
+            border-radius: 1rem; /* More rounded project cards */
+            margin-bottom: 2rem; /* Increased project card spacing */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly stronger project card shadow */
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease; /* Added background color */
+            position: relative;
+            padding-left: 3.5rem;
+             max-width: 1000px; /* Added max-width to project card */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px) scale(1.04); /* Subtler scale on project hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Increased project hover shadow */
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .project-icon{
+            position: absolute;
+            left: 1.5rem;
+            top: 2rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            color: #a7f3d0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .project-title {
+            font-size: 1.5rem; /* Larger project title (text-2xl) */
+            font-weight: 600; /* Use 600 for Inter's semi-bold */
+            color: #b0f2fe; /* Lighter cyan for project title (cyan-100) */
+            margin-bottom: 0.5rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+        .project-description {
+            font-size: 1.1rem; /* Slightly larger project description (text-base) */
+            color: #e5e7eb; /* Gray-200 */
+            line-height: 1.9; /* Increased project description line height */
+            margin-bottom: 1rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            color: #4f46e5; /* Vibrant purple link (violet-600) */
+            font-weight: 600; /* Use 600 for Inter's semi-bold */
+            text-decoration: none;
+            transition: color 0.2s ease, transform 0.2s ease; /* Added transform transition */
+            padding: 0.25rem 0.5rem; /* Added padding for better hover effect */
+            border-radius: 0.5rem;
+            gap: 0.5rem;
+        }
+        .project-link:hover {
+            color: #6d28d9; /* Darker purple on hover (violet-700) */
+            transform: translateX(4px); /* Slight horizontal movement on hover */
+        }
+        .education-card {
+            background-color: rgba(255, 255, 255, 0.06); /* More transparent education cards */
+            padding: 2rem; /* Increased education card padding */
+            border-radius: 1rem; /* More rounded education cards */
+            margin-bottom: 2rem; /* Increased education card spacing */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly stronger education card shadow */
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+            padding-left: 3.5rem;
+            max-width: 1000px; /* Added max-width to education card */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .education-card:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .education-icon{
+            position: absolute;
+            left: 1.5rem;
+            top: 2rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            color: #a7f3d0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .institution-name {
+            font-size: 1.5rem; /* Larger institution name (text-2xl) */
+            font-weight: 600; /* Use 600 for Inter's semi-bold */
+            color: #b0f2fe; /* Lighter cyan for institution (cyan-100) */
+            margin-bottom: 0.5rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+        .degree {
+            font-size: 1.1rem; /* Slightly larger degree (text-base) */
+            font-weight: 500; /* Use 500 for Inter's medium */
+            color: #d1d5db; /* Gray-300 */
+            margin-bottom: 0.75rem; /* Increased degree spacing */
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .education-date {
+            font-size: 0.9rem; /* Slightly larger education date (text-sm) */
+            color: #9ca3af; /* Gray-400 */
+            margin-bottom: 1rem;
+        }
+        .certification-name {
+            font-size: 1.1rem; /* Slightly larger certification name (text-base) */
+            color: #e5e7eb; /* Gray-200 */
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding-left: 2.5rem;
+        }
+
+        .certification-name i{
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #a7f3d0;
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 0 1rem;
+             max-width: 1000px; /* Added max-width to contact section */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .contact-text {
+            font-size: 1.2rem; /* Slightly larger contact text (text-lg) */
+            color: #e5e7eb; /* Gray-200 */
+            margin-bottom: 1.5rem; /* Increased contact text spacing */
+            line-height: 1.9;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .contact-button {
+            display: flex; /* Changed to flex */
+            align-items: center;
+            justify-content: center; /* Center the button */
+            padding: 1rem 2.5rem; /* Slightly increased contact button padding */
+            font-size: 1.25rem; /* Larger contact button text (text-lg) */
+            font-weight: 600; /* Use 600 for Inter's semi-bold */
+            color: #fff;
+            background-color: #10b981; /* More vibrant green (emerald-500) */
+            border-radius: 0.75rem; /* More rounded contact button (rounded-lg) */
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease; /* Added background-color transition */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Deeper contact button shadow */
+            cursor: pointer;
+            border: none;
+            outline: none;
+            gap: 0.5rem;
+            margin: 20px auto; /* Added to center the button horizontally */
+            width: 500px
+        }
+        .contact-button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Increased contact button hover shadow */
+            background-color: #059669; /* Darker green on hover (emerald-600) */
+        }
+        .contact-button:active {
+            transform: translateY(0) scale(0.95);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Smaller contact button active shadow */
+        }
+        .footer {
+            text-align: center;
+            padding: 2.5rem 0; /* Increased footer padding */
+            margin-top: 4rem; /* Increased footer margin */
+            background-color: #1f2937; /* Darker footer (gray-800) */
+            color: #d1d5db; /* Lighter footer text (gray-300) */
+            font-size: 0.9rem; /* Slightly larger footer text (text-sm) */
+            border-top: 1px solid rgba(255, 255, 255,0.08);
+}
+        .footer a {
+            color: #6ee7b7; /* Cyan link in footer (teal-300) */
+            text-decoration: none;
+            transition: color 0.2s ease, transform 0.2s ease;
+            padding: 0.25rem;
+            border-radius: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .footer a:hover {
+            color: #14b8a6; /* Darker cyan on hover (teal-500) */
+            transform: translateX(2px);
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity:1; }
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideInBottom {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+         @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+        .slide-in-left {
+            animation: slideInLeft 1s ease forwards;
+        }
+        .slide-in-right {
+            animation: slideInRight 1s ease forwards;
+        }
+        .slide-in-bottom {
+            animation: slideInBottom 1s ease forwards;
+        }
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 2rem 0;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            animation: fadeInScale 0.6s ease-out;
+            object-fit: cover;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Responsive Adjustments (Slightly Refined) */
+        @media (max-width: 768px) { /* Medium screens and below (md breakpoint) */
+            .container {
+                padding: 1.5rem;
+            }
+            .section {
+                font-size: 2rem; /* Adjusted for smaller screens */
+                gap: 0.5rem;
+                max-width: 100%; /* Make sections full width on small screens */
+            }
+            .section-title i{
+                font-size: 1.5rem;
+            }
+            .hero-title {
+                font-size: 3rem; /* Adjusted for smaller screens */
+            }
+            .hero-subtitle {
+                font-size: 1.25rem; /* Adjusted for smaller screens */
+                max-width: 95%;
+            }
+            .about-content {
+                font-size: 1rem;
+                max-width: 100%;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(1, 1fr); /* Stack on smaller screens */
+            }
+            .skill-card {
+                padding: 1.5rem;
+                gap: 0.5rem;
+            }
+             .skill-icon {
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1.25rem;
+            }
+            .experience-card, .project-card, .education-card {
+                padding: 1.5rem;
+                padding-left: 3rem;
+            }
+            .experience-icon, .project-icon, .education-icon{
+                left: 1rem;
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1.25rem;
+                top: 1.5rem;
+            }
+            .company-name, .institution-name {
+                font-size: 1.25rem;
+            }
+            .job-title, .degree {
+                font-size: 1rem;
+            }
+            .job-description, .project-description {
+                font-size: 1rem;
+            }
+            .contact-text {
+                font-size: 1.1rem;
+            }
+            .cta-button, .contact-button {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+            .footer {
+                padding: 2rem 1rem;
+            }
+            .certification-name{
+                padding-left: 2rem;
+            }
+            .certification-name i{
+                left: 0;
+                top: 0.25rem;
+                width: 1.5rem;
+                height: 1.5rem;
+                font-size: 0.75rem;
+            }
+            .project-card {
+                padding: 1.5rem;
+                padding-left: 4rem;
+                text-align: left;
+            }
+
+            .project-icon {
+                top: 1.5rem;
+                transform: none;
+            }
+
+            .project-title {
+                font-size: 1.3rem;
+                line-height: 1.4;
+                margin-top: 0.25rem;
+            }
+
+            .project-description {
+                font-size: 1rem;
+                line-height: 1.6;
+                margin: 0.75rem 0;
+                text-align: justify;
+            }
+
+            .project-link {
+                display: inline-flex;
+                margin-top: 0.5rem;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) { /* Small screens (sm breakpoint) */
+            .hero-title {
+                font-size: 2.5rem; /* Further adjusted for very small screens */
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 1.75rem;
+            }
+            .cta-button, .contact-button {
+                width: 100%; /* Full-width buttons on very small screens */
+                text-align: center;
+                gap: 0.5rem;
+            }
+            .footer {
+                font-size: 0.85rem;
+            }
+             .experience-card, .project-card, .education-card{
+                padding-left: 1rem;
+            }
+            .experience-icon, .project-icon, .education-icon{
+                left: 0;
+            }
+            .project-card {
+                padding: 1.25rem;
+                padding-left: 3.5rem;
+            }
+
+            .project-icon {
+                left: 1rem;
+                width: 2rem;
+                height: 2rem;
+                font-size: 1rem;
+            }
+
+            .project-title {
+                font-size: 1.2rem;
+            }
+
+            .project-description {
+                font-size: 0.95rem;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        /* Improved icon spacing and card layouts */
+        .experience-card, .project-card, .education-card {
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            padding-left: 5rem; /* Increased space for icon */
+        }
+
+        .experience-icon, .project-icon, .education-icon {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%; /* Center vertically */
+            transform: translateY(-50%);
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
+        .certification-name {
+            display: flex;
+            align-items: center;
+            padding-left: 0;
+            gap: 1rem;
+        }
+
+        .certification-name i {
+            position: static; /* Remove absolute positioning */
+            flex-shrink: 0;
+        }
+
+        /* Enhanced responsive design */
+        @media (max-width: 1024px) {
+            .section {
+                max-width: 90%;
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                max-width: 100%;
+                margin: 0 1rem 4rem 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+                gap: 1rem;
+            }
+
+            .experience-card, .project-card, .education-card {
+                padding: 1.5rem;
+                padding-left: 4rem;
+            }
+
+            .experience-icon, .project-icon, .education-icon {
+                width: 2rem;
+                height: 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                margin: 0 0.5rem 3rem 0.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr; /* Single column on mobile */
+            }
+
+            .experience-card, .project-card, .education-card {
+                padding: 1.25rem;
+                padding-left: 3.5rem;
+            }
+
+            .hero-section {
+                padding: 0 1rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                max-width: 100%;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .certification-name {
+                font-size: 0.9rem;
+                gap: 0.5rem;
+            }
+
+            /* Adjust mobile menu */
+            #mobile-menu .bg-gray-800 {
+                width: 100%;
+            }
+        }
+
+        /* Fix for very small devices */
+        @media (max-width: 320px) {
+            .hero-title {
+                font-size: 1.75rem;
+            }
+
+            .experience-card, .project-card, .education-card {
+                padding: 1rem;
+                padding-left: 3rem;
+            }
+        }
+
+        /* Update existing card styles */
+        .experience-card, .project-card, .education-card {
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 2rem 2rem 5rem;
+            position: relative;
+            width: 100%;
+            margin: 0 auto 2rem;
+            box-sizing: border-box;
+        }
+
+        .experience-icon, .project-icon, .education-icon {
+            position: absolute;
+            left: 1.5rem;
+            top: 2rem;
+            transform: none;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 0;
+                margin: 0 auto 4rem;
+                width: 90%;
+            }
+
+            .experience-card, .project-card, .education-card {
+                padding: 1.5rem 1.5rem 1.5rem 4rem;
+                margin: 0 auto 1.5rem;
+            }
+
+            .experience-icon, .project-icon, .education-icon {
+                left: 1rem;
+                top: 1.5rem;
+                width: 2rem;
+                height: 2rem;
+                font-size: 1rem;
+            }
+
+            .project-description, .job-description {
+                padding-right: 0.5rem;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                width: 95%;
+            }
+
+            .experience-card, .project-card, .education-card {
+                padding: 1.25rem 1rem 1.25rem 3.5rem;
+            }
+
+            .project-icon, .experience-icon, .education-icon {
+                left: 0.75rem;
+                top: 1.25rem;
+            }
+
+            .company-name, .project-title, .institution-name {
+                font-size: 1.2rem;
+                margin-top: 0;
+            }
+
+            .certification-name {
+                display: flex;
+                align-items: center;
+                padding-left: 2.5rem;
+                position: relative;
+            }
+
+            .certification-name i {
+                position: absolute;
+                left: 0.75rem;
+            }
+        }
+
+        /* Mobile Navigation Styles */
+        .mobile-nav-link {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            font-size: 1.25rem;
+            color: #e5e7eb;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        #mobile-menu.active .mobile-nav-link {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        #mobile-menu.active .mobile-nav-link:nth-child(1) { transition-delay: 0.1s; }
+        #mobile-menu.active .mobile-nav-link:nth-child(2) { transition-delay: 0.2s; }
+        #mobile-menu.active .mobile-nav-link:nth-child(3) { transition-delay: 0.3s; }
+        #mobile-menu.active .mobile-nav-link:nth-child(4) { transition-delay: 0.4s; }
+        #mobile-menu.active .mobile-nav-link:nth-child(5) { transition-delay: 0.5s; }
+
+        .mobile-nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            padding-left: 2rem;
+            color: white;
+        }
+
+        /* Dark/Light Mode Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            width: 60px;
+            height: 30px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 4px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, #4f46e5, #a7f3d0, #4f46e5);
+            background-size: 200% 200%;
+            animation: gradient 3s linear infinite;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: -1;
+            border-radius: 15px;
+        }
+
+        .theme-toggle:hover::before {
+            opacity: 1;
+        }
+
+        .theme-toggle::after {
+            content: '';
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #fff;
+            transform: translateX(0);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        .theme-toggle.light-mode {
+            background: rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-toggle.light-mode::after {
+            transform: translateX(30px);
+            background: #1a1a1a;
+        }
+
+        .theme-toggle .icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8px;
+            box-sizing: border-box;
+            color: #fff;
+            font-size: 14px;
+            z-index: 1;
+        }
+
+        .theme-toggle .icons i {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.7;
+        }
+
+        .theme-toggle:hover .icons i {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Theme Transition Effects */
+        body {
+            transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                      color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section, .navbar, .mobile-menu, .footer,
+        .skill-card, .experience-card, .project-card, .education-card,
+        .contact-button, .cta-button, .download-cv-button,
+        .floating-nav-button, .social-icon {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes themeSwitch {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+
+        .theme-switching * {
+            animation: themeSwitch 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Light Mode Colors */
+        :root {
+            --bg-dark: #111827;
+            --text-dark: #f9fafb;
+            --card-dark: rgba(255, 255, 255, 0.06);
+            --border-dark: rgba(255, 255, 255, 0.1);
+            --primary-dark: #4f46e5;
+            --accent-dark: #a7f3d0;
+
+            --bg-light: #ffffff;
+            --text-light: #1a1a1a;
+            --card-light: rgba(0, 0, 0, 0.02);
+            --border-light: rgba(0, 0, 0, 0.1);
+            --primary-light: #2563eb;
+            --accent-light: #047857;
+            --text-light-secondary: #374151;
+            --text-light-tertiary: #4b5563;
+        }
+
+        body.light-mode {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+        }
+
+        body.light-mode .section-title {
+            color: var(--text-light);
+            text-shadow: none;
+        }
+
+        body.light-mode .hero-title {
+            color: var(--text-light);
+            text-shadow: none;
+        }
+
+        body.light-mode .hero-subtitle {
+            color: var(--text-light-secondary);
+            text-shadow: none;
+        }
+
+        body.light-mode .about-content {
+            color: var(--text-light-secondary);
+            text-shadow: none;
+        }
+
+        body.light-mode .skill-card {
+            background-color: var(--card-light);
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-mode .skill-title {
+            color: var(--text-light);
+            text-shadow: none;
+        }
+
+        body.light-mode .skill-card p {
+            color: var(--text-light-secondary);
+        }
+
+        body.light-mode .experience-card,
+        body.light-mode .project-card,
+        body.light-mode .education-card {
+            background-color: var(--card-light);
+            border-color: var(--border-light);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-mode .company-name,
+        body.light-mode .project-title,
+        body.light-mode .institution-name {
+            color: var(--primary-light);
+            text-shadow: none;
+        }
+
+        body.light-mode .job-title,
+        body.light-mode .degree {
+            color: var(--text-light-secondary);
+            text-shadow: none;
+        }
+
+        body.light-mode .date-range {
+            color: var(--text-light-tertiary);
+        }
+
+        body.light-mode .job-description,
+        body.light-mode .project-description {
+            color: var(--text-light-secondary);
+            text-shadow: none;
+        }
+
+        body.light-mode .certification-name {
+            color: var(--text-light-secondary);
+            text-shadow: none;
+        }
+
+        body.light-mode .contact-text {
+            color: var(--text-light-secondary);
+            text-shadow: none;
+        }
+
+        body.light-mode header {
+            border-color: var(--border-light);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        body.light-mode header a {
+            color: var(--text-light);
+        }
+
+        body.light-mode nav a {
+            color: var(--text-light-secondary) !important;
+        }
+
+        body.light-mode nav a:hover {
+            color: var(--text-light) !important;
+        }
+
+        body.light-mode .project-link {
+            color: var(--primary-light);
+        }
+
+        body.light-mode .project-link:hover {
+            color: var(--accent-light);
+        }
+
+        body.light-mode .footer {
+            background-color: #f8fafc;
+            border-color: var(--border-light);
+            color: var(--text-light-secondary);
+        }
+
+        body.light-mode .footer a {
+            color: var(--primary-light);
+        }
+
+        body.light-mode .footer a:hover {
+            color: var(--accent-light);
+        }
+
+        body.light-mode #mobile-menu {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        body.light-mode .mobile-nav-link {
+            color: var(--text-light-secondary);
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        body.light-mode .mobile-nav-link:hover {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--text-light);
+        }
+
+        body.light-mode .theme-toggle {
+            background: rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-mode .theme-toggle .icons {
+            color: var(--text-light);
+        }
+
+        @media (max-width: 768px) {
+            .theme-toggle {
+                bottom: 1.5rem;
+                left: 1.5rem; /* Adjusted for mobile */
+            }
+        }
+
+        /* Modern Navbar Styles */
+        .navbar-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar {
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1rem;
+            color: #e5e7eb;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #4f46e5, #a7f3d0);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, #4f46e5, #a7f3d0);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            border-radius: 0.5rem;
+        }
+
+        .nav-link:hover::after {
+            opacity: 0.1;
+        }
+
+        .nav-link.active {
+            color: #fff;
+            background: rgba(79, 70, 229, 0.1);
+        }
+
+        .nav-link.active::before {
+            transform: scaleX(1);
+        }
+
+        /* Mobile Menu Button */
+        .menu-button {
+            display: none;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+            position: relative;
+            z-index: 1001;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-button .menu-icon,
+        .menu-button .close-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            color: #e5e7eb;
+        }
+
+        .menu-button .menu-icon {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-button .close-icon {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .menu-button.active .menu-icon {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .menu-button.active .close-icon {
+            opacity: 1;
+            visibility: visible;
+            z-index: 1002;
+            color: #e5e7eb;
+            font-size: 1.75rem; /* Slightly larger X icon */
+        }
+
+        /* Light Mode Styles for Menu Button */
+        body.light-mode .menu-button .menu-icon,
+        body.light-mode .menu-button .close-icon {
+            color: #374151;
+        }
+
+        body.light-mode .menu-button.active .close-icon {
+            color: #374151;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 6rem 2rem;
+            transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        /* Add overlay when menu is active */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav-link {
+            font-size: 1.25rem;
+            padding: 1rem;
+            color: #e5e7eb;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            transform: translateX(50px);
+            opacity: 0;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .mobile-menu.active .mobile-nav-link {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .mobile-menu.active .mobile-nav-link:nth-child(1) { transition-delay: 0.1s; }
+        .mobile-menu.active .mobile-nav-link:nth-child(2) { transition-delay: 0.2s; }
+        .mobile-menu.active .mobile-nav-link:nth-child(3) { transition-delay: 0.3s; }
+        .mobile-menu.active .mobile-nav-link:nth-child(4) { transition-delay: 0.4s; }
+        .mobile-menu.active .mobile-nav-link:nth-child(5) { transition-delay: 0.5s; }
+
+        /* Light Mode Styles */
+        body.light-mode .navbar {
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .nav-link {
+            color: #374151;
+        }
+
+        body.light-mode .nav-link::before {
+            background: linear-gradient(90deg, #2563eb, #047857);
+        }
+
+        body.light-mode .nav-link::after {
+            background: linear-gradient(90deg, #2563eb, #047857);
+        }
+
+        body.light-mode .nav-link.active {
+            color: #2563eb;
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        body.light-mode .menu-button .bar {
+            background: #374151;
+        }
+
+        body.light-mode .mobile-menu {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        body.light-mode .mobile-nav-link {
+            color: #374151;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-mode .mobile-nav-link:hover {
+            background: rgba(0, 0, 0, 0.1);
+            color: #2563eb;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .menu-button {
+                display: block;
+            }
+
+            .menu-button.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .menu-button.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-button.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+
+        /* Social Icons Styles */
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-left: 2rem;
+        }
+
+        .social-icon {
+            position: relative;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #e5e7eb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .social-icon i {
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, #4f46e5, #a7f3d0);
+            opacity: 0;
+            transition: all 0.3s ease;
+            transform: scale(0.8);
+            border-radius: 50%;
+        }
+
+        .social-icon:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icon:hover i {
+            color: white;
+            transform: scale(1.2);
+        }
+
+        /* Social Icons Light Mode */
+        body.light-mode .social-icon {
+            color: #374151;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-mode .social-icon::before {
+            background: linear-gradient(45deg, #2563eb, #047857);
+        }
+
+        body.light-mode .social-icon:hover i {
+            color: white;
+        }
+
+        /* Mobile Adjustments for Social Icons */
+        @media (max-width: 768px) {
+            .social-icons {
+                margin: 2rem 0;
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            .social-icon {
+                width: 45px;
+                height: 45px;
+            }
+
+            .social-icon i {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Hero Section Social Icons */
+        .hero-social-icons {
+            margin: 2rem 0 0 0;
+            justify-content: center;
+            animation-delay: 0.3s;
+        }
+
+        .hero-social-icons .social-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 0.5rem;
+        }
+
+        .hero-social-icons .social-icon i {
+            font-size: 1.3rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-social-icons {
+                margin-top: 1.5rem;
+            }
+            
+            .hero-social-icons .social-icon {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .hero-social-icons .social-icon i {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Floating Navbar Button */
+        .floating-nav {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        .floating-nav.active {
+            display: block;
+            animation: slideInRight 0.3s ease forwards;
+        }
+
+        .floating-nav-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(79, 70, 229, 0.9);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-nav-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, #4f46e5, #a7f3d0);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .floating-nav-button:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .floating-nav-button:hover::before {
+            opacity: 1;
+        }
+
+        .floating-nav-button i {
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .floating-nav-button:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Light Mode Styles for Floating Nav */
+        body.light-mode .floating-nav-button {
+            background: rgba(37, 99, 235, 0.9);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .floating-nav-button::before {
+            background: linear-gradient(45deg, #2563eb, #047857);
+        }
+
+        @media (max-width: 768px) {
+            .floating-nav {
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+
+            .floating-nav-button {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Download CV Button Styles */
+        .download-cv-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(45deg, #4f46e5, #a7f3d0);
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            border: none;
+            outline: none;
+            gap: 0.5rem;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-cv-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, #6d28d9, #10b981);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .download-cv-button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .download-cv-button:hover::before {
+            opacity: 1;
+        }
+
+        .download-cv-button:active {
+            transform: translateY(0) scale(0.95);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-cv-button i {
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .download-cv-button:hover i {
+            transform: translateY(2px);
+        }
+
+        /* Light Mode Styles for Download CV Button */
+        body.light-mode .download-cv-button {
+            background: linear-gradient(45deg, #2563eb, #047857);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .download-cv-button::before {
+            background: linear-gradient(45deg, #1d4ed8, #065f46);
+        }
+
+        @media (max-width: 768px) {
+            .download-cv-button {
+                padding: 0.875rem 2rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Hero Buttons Container */
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-direction: row; /* Ensure horizontal layout */
+        }
+
+        /* Adjust button sizes to be consistent */
+        .cta-button, .download-cv-button {
+            min-width: 200px;
+            padding: 1rem 2.5rem;
+            font-size: 1.25rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 0; /* Remove any margin */
+        }
+
+        @media (max-width: 768px) {
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .cta-button, .download-cv-button {
+                width: 100%;
+                min-width: unset;
+            }
+        }
+
+        /* Mobile Menu Button Responsive Styles */
+        @media (max-width: 768px) {
+            .menu-button {
+                display: flex; /* Show on small screens */
+            }
+
+            .nav-menu {
+                display: none; /* Hide desktop menu on small screens */
+            }
+        }
+
+        @media (min-width: 769px) {
+            .menu-button {
+                display: none; /* Hide on large screens */
+            }
+
+            .nav-menu {
+                display: flex; /* Show desktop menu on large screens */
+            }
+        }
+
+        /* Mobile Menu Close Button */
+        .mobile-menu .close-button {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: #e5e7eb;
+            font-size: 1.75rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1002;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu .close-button:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        body.light-mode .mobile-menu .close-button {
+            color: #374151;
+        }
+
+        body.light-mode .mobile-menu .close-button:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-50">
+    <header class="navbar-container">
+        <nav class="navbar">
+            <div class="container flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold transition-transform hover:scale-105 flex items-center gap-2">
+                    <i class="fa-solid fa-cloud"></i>
+                    Muhammad Gamal
+                </a>
+                
+                <div class="nav-menu hidden md:flex">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+
+                <button class="menu-button" aria-label="Toggle Navigation">
+                    <i class="fas fa-bars menu-icon"></i>
+                    <i class="fa-solid fa-x close-icon"></i>
+                </button>
+            </div>
+        </nav>
+
+        <div class="mobile-menu">
+            <button class="close-button" aria-label="Close Menu">
+                <i class="fa-solid fa-x"></i>
+            </button>
+            <a href="#about" class="mobile-nav-link">About</a>
+            <a href="#skills" class="mobile-nav-link">Skills</a>
+            <a href="#experience" class="mobile-nav-link">Experience</a>
+            <a href="#projects" class="mobile-nav-link">Projects</a>
+            <a href="#contact" class="mobile-nav-link">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <h1 class="hero-title fade-in">
+                Muhammad Gamal
+            </h1>
+            <p class="hero-subtitle fade-in">
+                DevOps Engineer | Cloud Enthusiast | Automation Advocate
+            </p>
+            
+            <!-- Hero Buttons Container -->
+            <div class="hero-buttons">
+                <a href="#contact" class="cta-button slide-in-bottom pulse">
+                    <i class="fas fa-hand-point-down"></i>
+                    Get in Touch
+                </a>
+                
+                <a href="https://drive.google.com/file/d/1bXNPgEl9Al-fBsPHpuWjRyXFkrdsYB0r/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="download-cv-button slide-in-bottom pulse">
+                    <i class="fas fa-download"></i>
+                    Download CV
+                </a>
+            </div>
+            
+            <!-- Add social icons to hero section -->
+            <div class="social-icons hero-social-icons slide-in-bottom">
+                <a href="https://www.linkedin.com/in/mgghatory/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/mujemi26" target="_blank" class="social-icon" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:mgghatory@gmail.com" class="social-icon" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <h2 class="section-title slide-in-left">
+                 <i class="fas fa-user"></i>
+                About Me
+            </h2>
+            <div class="about-me">
+                <img src="assets/profile.jpg" alt="Muhammad Gamal" class="profile-image">
+                <p class="about-content slide-in-right">
+                    Hello! I'm Muhammad Gamal, a DevOps Engineer passionate about building and
+                    optimizing cloud infrastructure, automating processes, and streamlining software
+                    delivery. With experience in implementing CI/CD pipelines, containerization, and
+                    system administration, I'm dedicated to helping organizations achieve greater
+                    scalability, efficiency, and reliability. I am a proactive and self-motivated
+                    individual with strong interpersonal and organizational skills, eager to contribute
+                    to a dynamic team and make a meaningful impact.
+                </p>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2 class="section-title slide-in-left">
+                <i class="fas fa-graduation-cap"></i>
+                Skills
+            </h2>
+            <div class="skills-grid">
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                         <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="skill-title">Cloud Infrastructure</h3>
+                    <p class="text-gray-300">AWS, Azure, GCP</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="skill-title">Automation & IaC</h3>
+                    <p class="text-gray-300">Ansible, Terraform, Bash</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fa-solid fa-timeline"></i>
+                    </div>
+                    <h3 class="skill-title">CI/CD Pipelines</h3>
+                    <p class="text-gray-300">Jenkins, GitLab CI, GitHub Actions</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="skill-title">Containerization</h3>
+                    <p class="text-gray-300">Docker, Kubernetes</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3 class="skill-title">System Administration</h3>
+                    <p class="text-gray-300">Linux, Windows</p>
+                </div>
+                 <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3 class="skill-title">Version Control</h3>
+                    <p class="text-gray-300">Git, GitHub</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <h2 class="section-title slide-in-left">
+                <i class="fas fa-briefcase"></i>
+                Work Experience
+            </h2>
+            <div class="experience-card slide-in-right">
+                <div class="experience-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h3 class="company-name">iVolve Technologies</h3>
+                <h4 class="job-title">DevOps Engineer Intern</h4>
+                <p class="date-range">Dec 2024 - Dec 2024</p>
+                <ul class="job-description">
+                    <li>Implemented automated deployment pipelines using Jenkins and Ansible, accelerating deployment processes by 30%.</li>
+                    <li>Acquired hands-on expertise in designing containerized applications with Kubernetes and Docker, enhancing scalability and operational efficiency.</li>
+                </ul>
+            </div>
+            <div class="experience-card slide-in-left">
+                 <div class="experience-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3 class="company-name">Giza Food</h3>
+                <h4 class="job-title">IT Helpdesk</h4>
+                <p class="date-range">May 2024 - Jul 2024</p>
+                <ul class="job-description">
+                    <li>Orchestrated the installation and configuration of Windows drivers and printers to achieve 100% system readiness.</li>
+                    <li>Troubleshot and resolved user issues, attaining an 85% first-call resolution rate that significantly reduced downtime.</li>
+                    <li>Administered user account management, streamlining processes to bolster security and enhance accessibility for employees.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h2 class="section-title slide-in-left">
+                 <i class="fas fa-project-diagram"></i>
+                Projects
+            </h2>
+            <div class="project-card slide-in-right">
+                <div class="project-icon">
+                    <i class="fa-solid fa-cloud"></i>
+                </div>
+                <h3 class="project-title">Full-Stack Cloud DevOps Project</h3>
+                <p class="project-description">
+                    A comprehensive project demonstrating full-stack development and DevOps practices
+                    in a cloud environment.
+                </p>
+                <a href="https://github.com/mujemi26/CloudDevOpsProject" target="_blank" rel="noopener noreferrer" class="project-link">
+                     <i class="fab fa-github"></i>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="project-card slide-in-left">
+                <div class="project-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h3 class="project-title">Board Game Review App</h3>
+                <p class="project-description">
+                    A web application for reviewing board games, showcasing front-end and back-end
+                    development skills.
+                </p>
+                <a href="https://github.com/mujemi26/BoardGame-review" target="_blank" rel="noopener noreferrer" class="project-link">
+                    <i class="fab fa-github"></i>
+                    View on GitHub
+                </a>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <h2 class="section-title slide-in-left">
+                <i class="fas fa-university"></i>
+                Education & Certifications
+            </h2>
+            <div class="education-card slide-in-right">
+                 <div class="education-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <h3 class="institution-name">Sadat Academy for Management Sciences</h3>
+                <h4 class="degree">Bachelor of Management Information Systems</h4>
+                <p class="education-date">Major: Business Information Systems</p>
+            </div>
+            <div class="education-card slide-in-left">
+                 <div class="education-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <h3 class="institution-name">NTI - National Telecommunication Institute</h3>
+                <h4 class="degree">Cloud DevOps Accelerator Scholarship</h4>
+            </div>
+             <div class="education-card slide-in-right">
+                <div class="education-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <h3 class="institution-name">KodeKloud</h3>
+                <h4 class="degree">DevOps Pre-Requisite Course</h4>
+            </div>
+            <div class="education-card slide-in-left">
+                <div class="education-icon">
+                    <i class="fa-brands fa-aws"></i>
+                </div>
+                <h3 class="institution-name">Amazon Web Services</h3>
+                <h4 class="degree">AWS Academy Cloud Foundations</h4>
+                <h4 class="degree">AWS Cloud Practitioner</h4>
+            </div>
+             <div class="education-card slide-in-right">
+                <div class="education-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3 class="institution-name">Broadcom</h3>
+                <h4 class="degree">Cloud and Virtualization Concepts</h4>
+                <h4 class="degree">Software Defined Storage Concepts</h4>
+            </div>
+            <div class="education-card slide-in-left">
+                <div class="education-icon">
+                    <i class="fa-brands fa-redhat"></i>
+                </div>
+                <h3 class="institution-name">Red Hat</h4>
+                <h4 class="degree">Red Hat System Administration I (RH124)</h4>
+                <h4 class="degree">Red Hat System Administration II (RH134)</h4>
+                <h4 class="degree">Red Hat Enterprise Linux Automation with Ansible (RH294)</h4>
+                <h4 class="degree">Red Hat OpenShift Development I With Podman 4.14</h4>
+            </div>
+            <div class="education-card slide-in-left">
+                <div class="education-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0,0,256,256">
+                        <g fill="#a7f3d0" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M42.41406,15c-3.58984,0 -5.83984,2.5 -5.83984,2.5c-1.19531,-1.55859 -2.84375,-2.49609 -5.63281,-2.49609c-2.94531,0 -4.89844,2.49609 -4.89844,2.49609c-1.19531,-1.55859 -3.35547,-2.5 -5.04297,-2.5c-2.60937,0 -4.67969,1.15234 -5.94531,4.05859l-4.23437,9.26172l-4.78906,-11.76172c-0.60547,-1.33203 -2.09766,-1.93359 -3.48828,-1.3125c-1.39453,0.625 -1.90625,2.17969 -1.27734,3.51172l5.84766,13.1875c0.91797,2.00391 1.89063,3.05469 3.70703,3.05469c1.94531,0 2.78906,-1.14453 3.71094,-3.05469c0,0 3.98047,-8.88281 4.46875,-9.94531c0.48828,-1.0625 1.30078,-2 2.5,-2c1.375,0 2.5,1.125 2.5,2.5v9.875c0,1.44531 1.08594,2.625 2.52344,2.625c1.43359,0 2.47656,-1.17969 2.47656,-2.625v-9.875c0,-1.375 1.125,-2.5 2.5,-2.5c1.375,0 2.5,1.125 2.5,2.5v10c0,1.375 1.125,2.5 2.5,2.5c1.375,0 2.5,-1.125 2.5,-2.5v-10c0,-1.375 1.125,-2.5 2.5,-2.5c1.375,0 2.5,1.125 2.5,2.5v10c0,1.375 1.125,2.5 2.5,2.5c1.375,0 2.5,-1.125 2.5,-2.5v-11.14453c0,-3.73828 -2.98828,-6.35547 -6.58594,-6.35547z"></path></g></g>
+                        </svg>
+                </div>
+                <h3 class="institution-name">VMware IT Academy</h4>
+                <h4 class="degree">VMware IT Academy: Cloud and Virtualization Concepts</h4>
+                <h4 class="degree">VMware IT Academy: Network Virtualization Concepts</h4>
+                <h4 class="degree">VMware IT Academy: Software Defined Storage Concepts</h4>
+            </div>
+            
+        </section>
+
+        <section id="contact" class="section">
+            <h2 class="section-title slide-in-left">
+                 <i class="fas fa-headset"></i>
+                Contact Me
+            </h2>
+            <p class="contact-text slide-in-right">
+                I'm always open to new opportunities and collaborations.<br> Feel free to reach out
+                to me via email or connect with me on social media.
+            </p>
+            <a href="mailto:mgghatory@gmail.com" class="contact-button slide-in-bottom pulse">
+                 <i class="fas fa-envelope"></i>
+                Get in Touch
+            </a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Muhammad Gamal. All rights reserved. | Developed by
+            <a href="https://github.com/mujemi26" target="_blank" rel="noopener noreferrer">
+                 <i class="fab fa-github"></i>
+                Muhammad Gamal
+            </a>
+        </p>
+    </footer>
+
+    <!-- Add Floating Nav Button -->
+    <div class="floating-nav" id="floatingNav">
+        <button class="floating-nav-button" aria-label="Scroll to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <!-- Add the theme toggle button -->
+    <div class="theme-toggle" id="themeToggle">
+        <div class="icons">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+        </div>
+    </div>
+
+    <div class="mobile-menu-overlay"></div>
+
+    <script>
+        // Add Smooth Scroll Function
+        function smoothScrollTo(targetId, duration = 1000) {
+            const target = document.querySelector(targetId);
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const progress = Math.min(timeElapsed / duration, 1);
+                
+                // Easing function for smooth acceleration and deceleration
+                const ease = t => t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+                
+                window.scrollTo(0, startPosition + (distance * ease(progress)));
+
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                }
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        // Add click event for the Get in Touch button in Hero Section
+        document.querySelector('.hero-section .cta-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            smoothScrollTo('#contact');
+        });
+
+        // Modern Navbar Functionality
+        const menuButton = document.querySelector('.menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+        const navbar = document.querySelector('.navbar-container');
+        const sections = document.querySelectorAll('section');
+        let lastScroll = 0;
+        let isScrolling = false;
+
+        // Toggle mobile menu
+        menuButton.addEventListener('click', () => {
+            menuButton.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.querySelector('.mobile-menu-overlay').classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Smooth scroll to section
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    // Close mobile menu if open
+                    menuButton.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+
+                    // Smooth scroll to section
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Hide navbar on scroll down, show on scroll up
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                navbar.style.transform = 'translateY(0)';
+                return;
+            }
+            
+            if (currentScroll > lastScroll && !mobileMenu.classList.contains('active')) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Update active link on scroll
+        function setActiveLink() {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', setActiveLink);
+        window.addEventListener('load', setActiveLink);
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const isClickInsideMenu = mobileMenu.contains(e.target);
+            const isClickOnMenuButton = menuButton.contains(e.target);
+            const isClickOnNavLink = Array.from(navLinks).some(link => link.contains(e.target));
+            const isClickOnOverlay = e.target.classList.contains('mobile-menu-overlay');
+            
+            if ((!isClickInsideMenu && !isClickOnMenuButton && !isClickOnNavLink && isClickOnOverlay) && 
+                mobileMenu.classList.contains('active')) {
+                menuButton.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.querySelector('.mobile-menu-overlay').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close mobile menu when clicking on a nav link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuButton.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.querySelector('.mobile-menu-overlay').classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-mode');
+            themeToggle.classList.add('light-mode');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            // Add transition class to body
+            document.body.classList.add('theme-switching');
+            
+            // Toggle theme classes
+            body.classList.toggle('light-mode');
+            themeToggle.classList.toggle('light-mode');
+            
+            // Save theme preference
+            const isLightMode = body.classList.contains('light-mode');
+            localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+            
+            // Remove transition class after animation
+            setTimeout(() => {
+                document.body.classList.remove('theme-switching');
+            }, 500);
+        });
+
+        // Floating Nav Functionality
+        const floatingNav = document.getElementById('floatingNav');
+        const floatingNavButton = document.querySelector('.floating-nav-button');
+
+        // Show floating nav when scrolling down
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                floatingNav.classList.add('active');
+            } else {
+                floatingNav.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll to top when clicking the button
+        floatingNavButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Update the JavaScript for the close button
+        const closeButton = document.querySelector('.mobile-menu .close-button');
+        
+        closeButton.addEventListener('click', () => {
+            menuButton.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.querySelector('.mobile-menu-overlay').classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    </script>
+</body>
+</html>
