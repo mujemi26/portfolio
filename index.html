@@ -224,13 +224,22 @@
             margin-bottom: 1rem;
         }
         .job-description {
-            font-size: 1.1rem; /* Slightly larger job description (text-base) */
-            color: #e5e7eb; /* Gray-200 */
-            line-height: 1.9; /* Increased job description line height */
-            margin-bottom: 1.5rem; /* Increased job description spacing */
+            font-size: 1.1rem;
+            color: #e5e7eb;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-            list-style-position: inside;
-            padding-left: 0.5rem;
+            list-style-type: disc; /* Add bullet points */
+            padding-left: 1.5rem; /* Add left padding for bullets */
+        }
+
+        .job-description li {
+            margin-bottom: 0.75rem; /* Add space between bullet points */
+            padding-left: 0.5rem; /* Add space between bullet and text */
+        }
+
+        .job-description li:last-child {
+            margin-bottom: 0; /* Remove margin from last item */
         }
         .project-card {
             background-color: rgba(255, 255, 255, 0.06); /* More transparent project cards */
@@ -1809,6 +1818,94 @@
         body.light-mode .mobile-menu .close-button:hover {
             background: rgba(0, 0, 0, 0.1);
         }
+
+        /* Certificate Button Styles */
+        .certificate-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #e5e7eb;
+            background: rgba(79, 70, 229, 0.1);
+            border: 1px solid rgba(79, 70, 229, 0.2);
+            border-radius: 0.75rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            margin-top: 1rem;
+            z-index: 1;
+            width: fit-content;
+            text-decoration: none;
+            margin-left: 0; /* Align to left */
+            margin-right: auto;
+            min-width: 180px;
+            max-width: 220px;
+        }
+
+        .education-card h4.degree {
+            margin-bottom: 0.5rem; /* Add consistent spacing between h4 and button */
+        }
+
+        .education-card h4.degree:last-of-type {
+            margin-bottom: 1rem; /* Add extra space after the last h4 before the button */
+        }
+
+        .certificate-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, #4f46e5, #a7f3d0);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .certificate-button:hover {
+            transform: translateY(-2px);
+            border-color: #4f46e5;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+        }
+
+        .certificate-button:hover::before {
+            opacity: 1;
+        }
+
+        .certificate-button i {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .certificate-button:hover i {
+            transform: translateX(3px);
+        }
+
+        /* Light Mode Styles for Certificate Button */
+        body.light-mode .certificate-button {
+            color: #374151;
+            background: rgba(37, 99, 235, 0.1);
+            border-color: rgba(37, 99, 235, 0.2);
+        }
+
+        body.light-mode .certificate-button:hover {
+            border-color: #2563eb;
+            color: #fff;
+        }
+
+        body.light-mode .certificate-button::before {
+            background: linear-gradient(45deg, #2563eb, #047857);
+        }
+
+        @media (max-width: 768px) {
+            .certificate-button {
+                padding: 0.625rem 1.25rem;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-50">
@@ -1969,6 +2066,7 @@
                     <li>Implemented automated deployment pipelines using Jenkins and Ansible, accelerating deployment processes by 30%.</li>
                     <li>Acquired hands-on expertise in designing containerized applications with Kubernetes and Docker, enhancing scalability and operational efficiency.</li>
                 </ul>
+                
             </div>
             <div class="experience-card slide-in-left">
                  <div class="experience-icon">
@@ -1982,6 +2080,7 @@
                     <li>Troubleshot and resolved user issues, attaining an 85% first-call resolution rate that significantly reduced downtime.</li>
                     <li>Administered user account management, streamlining processes to bolster security and enhance accessibility for employees.</li>
                 </ul>
+            
             </div>
         </section>
 
@@ -2039,6 +2138,10 @@
                 </div>
                 <h3 class="institution-name">NTI - National Telecommunication Institute</h3>
                 <h4 class="degree">Cloud DevOps Accelerator Scholarship</h4>
+                <a href="https://drive.google.com/file/d/15cyU6oRoY0lAFPIuuHtszXkH8mZ27tve/view" target="_blank" rel="noopener noreferrer" class="certificate-button">
+                    <i class="fas fa-certificate"></i>
+                    Show Certificate
+                </a>
             </div>
              <div class="education-card slide-in-right">
                 <div class="education-icon">
@@ -2046,6 +2149,10 @@
                 </div>
                 <h3 class="institution-name">KodeKloud</h3>
                 <h4 class="degree">DevOps Pre-Requisite Course</h4>
+                <a href="https://learn.kodekloud.com/user/certificate/2b9cdf3f-0927-4bf0-a049-2a8aa7dd498b" target="_blank" rel="noopener noreferrer" class="certificate-button">
+                    <i class="fas fa-certificate"></i>
+                    Show Certificate
+                </a>
             </div>
             <div class="education-card slide-in-left">
                 <div class="education-icon">
@@ -2054,6 +2161,10 @@
                 <h3 class="institution-name">Amazon Web Services</h3>
                 <h4 class="degree">AWS Academy Cloud Foundations</h4>
                 <h4 class="degree">AWS Cloud Practitioner</h4>
+                <a href="https://www.credly.com/badges/ee4ec1d1-bce0-48bc-a044-fe8df55ab759" target="_blank" rel="noopener noreferrer" class="certificate-button">
+                    <i class="fas fa-certificate"></i>
+                    Show Certificate
+                </a>
             </div>
              <div class="education-card slide-in-right">
                 <div class="education-icon">
@@ -2062,6 +2173,10 @@
                 <h3 class="institution-name">Broadcom</h3>
                 <h4 class="degree">Cloud and Virtualization Concepts</h4>
                 <h4 class="degree">Software Defined Storage Concepts</h4>
+                <a href="https://www.credly.com/badges/d360a764-4035-4915-b919-7d5c3d1d5d3f" target="_blank" rel="noopener noreferrer" class="certificate-button">
+                    <i class="fas fa-certificate"></i>
+                    Show Certificate
+                </a>
             </div>
             <div class="education-card slide-in-left">
                 <div class="education-icon">
